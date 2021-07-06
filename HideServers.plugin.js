@@ -11,13 +11,28 @@
 module.exports = (_ => {
     return (class {
         start() {
-            var serverList = document.getElementsByClassName('scroller-1Bvpku none-2Eo-qx scrollerBase-289Jih')[0];
-            var sidebar = document.getElementsByClassName('wrapper-3NnKdC')[0]
-            var sidebarBtn = document.createElement('span');
+			function createIDelm() {  
+			  var elements = document.querySelectorAll('.panels-j1Uci_');
+			  
+			  if (elements.length) {
+				elements[0].id = 'menus';
+			  }
+			}
+			function createDIVelm(){
+				var find = document.createElement("div");
+				find.setAttribute("class", "container-hs62");
+				var elements = document.getElementById("menus");
+				elements.prepend(find);
+			}
+			createIDelm();
+			createDIVelm();
+            var showhideBtn = document.getElementsByClassName('container-hs62')[0];
+            var servers = document.getElementsByClassName('wrapper-3NnKdC')[0]
+            var serversBtn = document.createElement('span');
             var btnStyle = document.createElement('style');
             btnStyle.id = 'HideSidebarStyles'
             btnStyle.innerHTML = `
-            .hide-sidebar-btn {
+            .hide-servers-btn {
                 color: #8e9297; 
                 display: flex; 
                 justify-content: center;
@@ -27,27 +42,27 @@ module.exports = (_ => {
                 border-radius: 7px;
                 font-weight: 500;
             }
-            .hide-sidebar-btn:hover{
+            .hide-servers-btn:hover{
                 cursor: pointer;
                 color: #fff;
                 background-color: #393c43;
             }`;
 
             document.getElementsByTagName('head')[0].appendChild(btnStyle);
-            sidebarBtn.innerHTML = '<<<'
-            sidebarBtn.classList.add('hide-sidebar-btn')
-            sidebarBtn.id = 'HideSideBarBtn'
-            sidebarBtn.addEventListener('click', function () {
-                if (sidebar.style.display === "" || sidebar.style.display === "flex") {
-                    sidebar.style.display = "none"
-                    sidebarBtn.innerHTML = '>>>'
+            serversBtn.innerHTML = '<<<'
+            serversBtn.classList.add('hide-servers-btn')
+            serversBtn.id = 'HideSideBarBtn'
+            serversBtn.addEventListener('click', function () {
+                if (servers.style.display === "" || servers.style.display === "flex") {
+                    servers.style.display = "none"
+                    serversBtn.innerHTML = '<<<'
                 }
                 else {
-                    sidebar.style.display = "flex"
-                    sidebarBtn.innerHTML = '<<<'
+                    servers.style.display = "flex"
+                    serversBtn.innerHTML = '>>>'
                 }
             })
-            serverList.insertBefore(sidebarBtn, serverList.firstElementChild.nextSibling);
+            showhideBtn.insertBefore(serversBtn, showhideBtn.firstElementChild);
         }
         stop() {
             let btn = document.getElementById('HideSideBarBtn')
