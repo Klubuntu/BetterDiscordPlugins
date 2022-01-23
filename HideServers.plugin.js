@@ -1,6 +1,6 @@
 /**
  * @name HideServer
- * @version 1.0.0
+ * @version 1.0.2
  * @description Plugin to hide servers in discord
  * @author Klubuntu modifed Pieloaf
  * @authorId 546747585675657226
